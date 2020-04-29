@@ -58,7 +58,7 @@ func main() {
 
 
 	ticker := time.NewTicker(time.Duration(parameters.Interval) * time.Minute)
-
+	fmt.Println("Health Checker started up and running...")
 	for _ = range ticker.C {
 		checkAllUrls()
 		var str strings.Builder
