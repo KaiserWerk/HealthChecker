@@ -1,0 +1,7 @@
+.idea/
+.git/
+build/
+
+config.json
+urls.json
+response_errors.log
