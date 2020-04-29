@@ -12,8 +12,10 @@ import (
 )
 
 type Parameters struct {
-	UserKey	string	`json:"userkey"`
-	ApiKey	string	`json:"apikey"`
+	UserKey       string `json:"userkey"`
+	ApiKey        string `json:"apikey"`
+	Interval      int    `json:"interval"`
+	ClientTimeout int    `json:"client_timeout"`
 }
 
 type CheckUrl struct {
@@ -40,6 +42,8 @@ func main() {
 	}
 	parameters = params
 
+	client.Timeout = time.Duration(parameters.ClientTimeout) * time.Second
+
 	// create pushover app "instance"
 	App = pushover.New(parameters.ApiKey)
 
@@ -53,7 +57,7 @@ func main() {
 	}
 
 
-	ticker := time.NewTicker(1 * time.Minute)
+	ticker := time.NewTicker(time.Duration(parameters.Interval) * time.Minute)
 
 	for _ = range ticker.C {
 		checkAllUrls()
@@ -61,7 +65,7 @@ func main() {
 		for k, v := range Urls {
 			if v.IsOffline == true {
 				if v.IsSent == false {
-					// message zusammenbauen
+					// construct message
 					if v.IsPreviouslyOffline == true {
 						str.WriteString(v.Url + " is still offline!\n")
 					} else {
