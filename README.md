@@ -12,9 +12,12 @@ API key, e.g.:
 
     {
       "userkey": "<my-user-key>",
-      "apikey": "<my-api-key>"
+      "apikey": "<my-api-key>",
+      "interval": 3,
+      "client_timeout": 30
     }
 
+An interval of 3 means the app checks the URLs every 3 minutes. The client timeout 
 The `urls.json` file contains a list of URLs to check, e.g.:
 
     [
