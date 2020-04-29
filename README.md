@@ -17,7 +17,8 @@ API key, e.g.:
       "client_timeout": 30
     }
 
-An interval of 3 means the app checks the URLs every 3 minutes. The client timeout 
+An interval of 3 means the app checks the URLs every 3 minutes. The client timeout is
+supplied in seconds. It is the time a single host is allowed to take to send a response.
 The `urls.json` file contains a list of URLs to check, e.g.:
 
     [
