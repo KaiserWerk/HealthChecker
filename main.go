@@ -180,7 +180,6 @@ func checkUrl(checkUrl CheckUrl) bool {
 
 		if netErrors != nil {
 			fmt.Println("no internet connection; exiting...")
-			os.Exit(0)
 		}
 
 		return false
